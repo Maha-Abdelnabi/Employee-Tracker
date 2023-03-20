@@ -1,7 +1,7 @@
 //Dependencies
 const inquirer = require("inquirer");
-const mysql = require("mysql");
-const cTable = require("console.table");
+ const mysql = require("mysql2");
+// const cTable = require("console.table");
 
 // Connect to database
 const db = mysql.createConnection(
@@ -120,3 +120,5 @@ const startPrompt = () => {
       }
     });
 }
+
+startPrompt();
