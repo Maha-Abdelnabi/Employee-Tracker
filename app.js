@@ -1,124 +1,127 @@
 //Dependencies
 const inquirer = require("inquirer");
- const mysql = require("mysql2");
-// const cTable = require("console.table");
 
-// Connect to database
-const db = mysql.createConnection(
-  {
-    host: "localhost",
-    // MySQL username,
-    user: "root",
-    // MySQL password
-    password: "Password-mySQL",
-    database: "employees_db",
-  }
-);
+const db = require("./db")
 
-// Establishing Connection to database
-db.connect((err) => {
-  if (err) throw err;
+const connectionJs = require("./db/connection");
+const cTable = require("console.table");
 
-  // Start main menu function
 
-  console.log(" WELCOME TO EMPLOYEE TRACKER ");
-  //run function after connection is established
-  startPrompt();
-});
 
 
 // Prompt User for Choices
-const startPrompt = () => {
+function startPrompt() {
   inquirer
-    .prompt([
-      {
-        name: "choices",
-        type: "list",
-        message: "What would you like to do?",
-        choices: [
-          "View all departments",
-          "View all roles",
-          "View all employees",
-          "Add a department",
-          "Add a role",
-          "Add an employee",
-          "Update an employee role",
-          "Update an employee manager",
-          "View employees by department",
-          "Delete a department",
-          "Delete a role",
-          "Delete an employee",
-          "View department budgets",
-          "No Action",``
-        ],
-      },
-    ])
-    .then((answers) => {
-      const { choices } = answers;
-
-      if (choices === "View all departments") {
-        
-      }
-
-      if (choices === "View all roles") {
-        
-      }
-
-      if (choices === "View all employees") {
-        
-      }
-
-      if (choices === "Add a department") {
-        
-      }
-
-      if (choices === "Add a role") {
-        
-      }
-
-      if (choices === "Add an employee") {
-        
-      }
-
-      if (choices === "Update an employee role") {
-        
-      }
-
-      if (choices === "Update an employee manager") {
-       
-      }
-
-      if (choices === "View employees by department") {
-        
-      }
-
-      if (choices === "Delete a department") {
-        
-      }
-
-      if (choices === "Delete a role") {
-        
-      }
-
-      if (choices === "Delete an employee") {
-        
-      }
-
-      if (choices === "View department budgets") {
-        
-      }
-
-      if (choices === "No Action") {
-        
-      }
+    .prompt({
+      name: "choice",
+      type: "list",
+      message: "What would you like to do?",
+      choices: [
+        {name: "View all departments",
+         value: "VIEW_DEPARTMENTS" },
+        {name:"View all roles",
+        value:"VIEW_ROLES"},
+        {name:"View all employees",
+        value:"VIEW_EMPLYEES"},
+        {name:"Add a department",
+        value:"ADD_DEPARTMENT"},
+        {name:"Add a role",
+        value:"ADD_ROLE"},
+        {name:"Add an employee",
+        value:"ADD_EMPLYEE"},
+        {name:"Update an employee role",
+        value:"UPDATE_ROLE"},
+        // "Update an employee manager",
+        // "View employees by department",
+        // "Delete a department",
+        // "Delete a role",
+        // "Delete an employee",
+        // "View department budgets",
+        {name:"Quit"}
+      ],
     })
-    .catch((error) => {
-      if (error.isTtyError) {
-        // Prompt couldn't be rendered in the current environment
-      } else {
-        // Something else went wrong
-      }
-    });
+    .then((answers) => {
+        switch (answers.choice) {
+          case "VIEW_DEPARTMENTS":
+            viewDepartments()
+            break;
+          case y:
+            // code block
+            break;
+          default:
+          quit();
+        }
+     })
+    
 }
+    //   const { choices } = answers;
 
+    //   if (choices === "View all departments") {
+    //     allDepartments();
+    //   }
+
+    //   if (choices === "View all roles") {
+    //   }
+
+    //   if (choices === "View all employees") {
+    //   }
+
+    //   if (choices === "Add a department") {
+    //   }
+
+    //   if (choices === "Add a role") {
+    //   }
+
+    //   if (choices === "Add an employee") {
+//       }
+
+//       if (choices === "Update an employee role") {
+//       }
+
+//       if (choices === "Update an employee manager") {
+//       }
+
+//       if (choices === "View employees by department") {
+//       }
+
+//       if (choices === "Delete a department") {
+//       }
+
+//       if (choices === "Delete a role") {
+//       }
+
+//       if (choices === "Delete an employee") {
+//       }
+
+//       if (choices === "View department budgets") {
+//       }
+
+//       if (choices === "No Action") {
+//       }
+//     });
+// };
+
+// //function to show all departments 
+// allDepartments = () => {
+//   console.log('Showing all departments...');
+ 
+//     startPrompt();
+  //};
+
+
+
+
+
+
+
+
+//     .catch((error) => {
+//       if (error.isTtyError) {
+//         // Prompt couldn't be rendered in the current environment
+//       } else {
+//         // Something else went wrong
+//       }
+//     });
+// }
+//     }
 startPrompt();
