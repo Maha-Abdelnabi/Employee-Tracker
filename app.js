@@ -1,9 +1,9 @@
 //Dependencies
 const inquirer = require("inquirer");
 
-const db = require("./db")
+//const db = require("./db")
 
-const connectionJs = require("./db/connection");
+//const connectionJs = require("./db/connection");
 const cTable = require("console.table");
 
 
@@ -43,85 +43,32 @@ function startPrompt() {
     .then((answers) => {
         switch (answers.choice) {
           case "VIEW_DEPARTMENTS":
-            viewDepartments()
+            viewDepartments();
             break;
-          case y:
-            // code block
+          case "VIEW_ROLES":
+            viewRoles();
+            break;
+          case "VIEW_EMPLYEES":
+            viewEmplyees();
+            break;
+          case "ADD_DEPARTMENT":
+            addDepartment();
+            break;
+          case "ADD_ROLE":
+            addRole();
+            break;
+          case "ADD_EMPLYEE":
+            addEmployee();
+            break;
+          case "UPDATE_ROLE":
+            updateRole();
             break;
           default:
-          quit();
+            quit();
         }
      })
     
 }
-    //   const { choices } = answers;
+    
 
-    //   if (choices === "View all departments") {
-    //     allDepartments();
-    //   }
-
-    //   if (choices === "View all roles") {
-    //   }
-
-    //   if (choices === "View all employees") {
-    //   }
-
-    //   if (choices === "Add a department") {
-    //   }
-
-    //   if (choices === "Add a role") {
-    //   }
-
-    //   if (choices === "Add an employee") {
-//       }
-
-//       if (choices === "Update an employee role") {
-//       }
-
-//       if (choices === "Update an employee manager") {
-//       }
-
-//       if (choices === "View employees by department") {
-//       }
-
-//       if (choices === "Delete a department") {
-//       }
-
-//       if (choices === "Delete a role") {
-//       }
-
-//       if (choices === "Delete an employee") {
-//       }
-
-//       if (choices === "View department budgets") {
-//       }
-
-//       if (choices === "No Action") {
-//       }
-//     });
-// };
-
-// //function to show all departments 
-// allDepartments = () => {
-//   console.log('Showing all departments...');
- 
-//     startPrompt();
-  //};
-
-
-
-
-
-
-
-
-//     .catch((error) => {
-//       if (error.isTtyError) {
-//         // Prompt couldn't be rendered in the current environment
-//       } else {
-//         // Something else went wrong
-//       }
-//     });
-// }
-//     }
 startPrompt();
