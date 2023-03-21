@@ -1,12 +1,25 @@
 //Dependencies
 const inquirer = require("inquirer");
+const mysql = require("mysql2");
+const db = require("./db");
 
-//const db = require("./db")
-
-//const connectionJs = require("./db/connection");
+// const connectionJs = require("./db/connection");
 const cTable = require("console.table");
 
+const connection = mysql.createConnection({
+  host: "localhost",
+  port: 3001,
+  // MySQL username,
+  user: "root",
+  // MySQL password
+  password: "Password-mySQL",
+  database: "employees_db",
+});
 
+// Establishing Connection to database
+connection.connect((err) => {
+  if (err) throw err;
+});
 
 
 // Prompt User for Choices
@@ -31,12 +44,6 @@ function startPrompt() {
         value:"ADD_EMPLYEE"},
         {name:"Update an employee role",
         value:"UPDATE_ROLE"},
-        // "Update an employee manager",
-        // "View employees by department",
-        // "Delete a department",
-        // "Delete a role",
-        // "Delete an employee",
-        // "View department budgets",
         {name:"Quit"}
       ],
     })
