@@ -3,7 +3,7 @@ const inquirer = require("inquirer");
 const mysql = require("mysql2");
 //const db = require("./db");
 
-const cTable = require("console.table");
+require("console.table");
 
 const connection = mysql.createConnection({
   host: "localhost",
@@ -47,7 +47,7 @@ function startPrompt() {
           viewRoles();
           break;
         case "VIEW_EMPLYEES":
-          viewEmplyees();
+          viewEmployees();
           break;
         case "ADD_DEPARTMENT":
           addDepartment();
@@ -96,7 +96,7 @@ viewRoles = () => {
 };
 
 // function to view employees
-viewEmplyees = () => {
+viewEmployees = () => {
   console.log("Showing all employees...\n");
   const query = `SELECT employee.id, 
                       employee.first_name, 
