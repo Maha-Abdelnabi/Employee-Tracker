@@ -1,13 +1,11 @@
 //Dependencies
 const inquirer = require("inquirer");
 const mysql = require("mysql2");
-//const db = require("./db");
-
 require("console.table");
 
+// create connection to database
 const connection = mysql.createConnection({
   host: "localhost",
-  //port: 3001,
   // MySQL username,
   user: "root",
   // MySQL password
@@ -72,9 +70,10 @@ function startPrompt() {
 viewDepartments = () => {
   console.log("Showing all departments...\n");
   const query = `SELECT department.id AS id, department.name AS department FROM department`;
-
+//callback that called the value we want to return
   connection.query(query, (err, rows) => {
     if (err) throw err;
+    //to show the result in the tables
     console.table(rows);
     startPrompt();
   });
@@ -105,7 +104,7 @@ viewEmployees = () => {
                       department.name AS department,
                       role.salary, 
                       CONCAT (manager.first_name, " ", manager.last_name) AS manager
-               FROM employee
+                      FROM employee
                       LEFT JOIN role ON employee.role_id = role.id
                       LEFT JOIN department ON role.department_id = department.id
                       LEFT JOIN employee manager ON employee.manager_id = manager.id`;
@@ -134,6 +133,7 @@ addDepartment = () => {
                   VALUES (?)`;
       connection.query(query, answer.addDept, (err, result) => {
         if (err) throw err;
+        //
         console.log("Added " + answer.addDept + " to departments!");
 
         viewDepartments();
@@ -326,7 +326,7 @@ updateRole = () => {
               params[0] = role;
               params[1] = employee;
 
-              // console.log(params)
+    
 
               const sql = `UPDATE employee SET role_id = ? WHERE id = ?`;
 
