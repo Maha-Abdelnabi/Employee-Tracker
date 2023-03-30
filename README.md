@@ -4,7 +4,7 @@
 
 ## Walkthrough Video link
 
-[Employee Tracker Walkthrough Video](https://drive.google.com/file/d/1Mr5qsVYdjRaDMNzKvt4mMTY2xcY15_OR/view)
+[Employee Tracker Walkthrough Video](https://drive.google.com/file/d/1DxfrPD9YMhBudhSVbGsEJ5tw_xn2kNZT/view)
  ## Description
 This project is to building a command-line application to manage a company's employee database, using Node.js, Inquirer, and MySQL.
 ## Table Of Contents
